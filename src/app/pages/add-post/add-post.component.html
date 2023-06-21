@@ -1,0 +1,8 @@
+<form (ngSubmit)="addPost()" #postForm="ngForm">
+  <div class="form-group">
+    <label for="content">Contenu :</label>
+    <textarea id="content" name="content" [(ngModel)]="postContent" class="form-control" required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
