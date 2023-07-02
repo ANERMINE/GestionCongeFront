@@ -8,6 +8,12 @@
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          
+          "skipTests": true
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -155,6 +161,12 @@
     }
   },
   "defaultProject": "argon-dashboard-angular",
+  "schematics": {
+    "@schematics/angular:component": {
+      "skipTests": true
+
+    }
+  },
   "cli": {
     "analytics": false
   }
