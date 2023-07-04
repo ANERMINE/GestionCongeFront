@@ -1,19 +1,34 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import {Post} from "../models/post";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  private apiUrl = 'http://example.com/api/posts'; // Remplacez par l'URL de votre API
+  private BASE_URL = 'http://localhost:8081/Test'; // Remplacez l'URL par l'URL du backend
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  addPost(content: string): Observable<any> {
-    const postData = { content: content };
+  getAllPosts(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.BASE_URL}/Post/allPosts`);
+  }
 
-    return this.http.post(this.apiUrl, postData);
-  }}
+  getPostById(id: number): Observable<Post> {
+    return this.http.get<Post>(`${this.BASE_URL}/Post/PostByID/${id}`);
+  }
 
+  addPost(post: any){
+    return this.http.post(`${this.BASE_URL}/addPost`, post);
+  }
 
+  updatePost(post: Post): Observable<Post> {
+    return this.http.put<Post>(`${this.BASE_URL}/Post/update/${post.id_post}`, post);
+  }
+
+  deletePost(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.BASE_URL}/Post/delete/${id}`);
+  }
+}
