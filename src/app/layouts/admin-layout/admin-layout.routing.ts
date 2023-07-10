@@ -10,7 +10,7 @@ import {AddPostComponent} from "../../pages/add-post/add-post.component";
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
-    { path: 'addConge',      component: AddCongeComponent },
+    { path: 'addConge',       component: AddCongeComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },

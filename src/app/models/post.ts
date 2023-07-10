@@ -5,6 +5,8 @@ export class Post{
   description: string;
   datePublication: Date;
   listCommentaire: Comment[];
+  employeeId: number;
+
 }
 
 
