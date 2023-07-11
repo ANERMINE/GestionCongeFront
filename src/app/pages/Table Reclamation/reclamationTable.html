@@ -1,0 +1,85 @@
+
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <br><br><br>
+      <!-- Page content -->
+      <div class="container-fluid mt--7">
+        <!-- Add Reclamation form -->
+        <form (submit)="addReclamation(formData)">
+          <div class="row">
+            <div class="col">
+              <div class="card shadow">
+                <div class="card-header border-0">
+                  <h3 class="mb-0">Liste des Reclamations</h3>
+                </div>
+                <div class="card-body">
+                  <!-- Collaborateur input field -->
+                  <div class="form-group">
+                    <label for="collaborateurInput">Collaborateur</label>
+                    <input type="text" class="form-control" id="collaborateurInput" [(ngModel)]="formData.collaborateur"
+                           required>
+                  </div>
+                  <!-- Nombre de jours input field -->
+                  <div class="form-group">
+                    <label for="joursInput">Nombre de jours</label>
+                    <input type="number" class="form-control" id="joursInput" [(ngModel)]="formData.nbJours" required>
+                  </div>
+                  <!-- Type de congé input field -->
+                  <div class="form-group">
+                    <label >Type de congé</label>
+
+                    <select class="form-control" aria-label="Default select example" [(ngModel)]="formData.type">
+                      <option selected>Open this select menu</option>
+                      <option value="DemandeSoldeConge">DemandeSoldeConge</option>
+                      <option value="Feedback">Feedback</option>
+                      <option value="DeclarationProbleme">DeclarationProbleme</option>
+                    </select>
+
+                  </div>
+
+                  <!-- Submit button -->
+                  <button type="submit" class="btn btn-primary">Add Reclamation</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Table -->
+        <div class="row mt-4">
+          <div class="col">
+            <div class="card shadow">
+              <div class="card-body">
+                <h3 class="mb-0">Reclamation Table</h3>
+                <div class="table-responsive">
+                  <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Collaborateur</th>
+                      <th scope="col">Nombre de jours</th>
+                      <th scope="col">Type de congé</th>
+                      <th scope="col">Etat</th>
+                      <th scope="col">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let reclamation of reclamations">
+                      <td>{{ reclamation.collaborateur }}</td>
+                      <td>{{ reclamation.nbJours }}</td>
+                      <td>{{ reclamation.type }}</td>
+                      <td>{{ reclamation.etat }}</td>
+                      <td>{{ reclamation.date }}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

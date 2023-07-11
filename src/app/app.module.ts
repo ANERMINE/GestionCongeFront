@@ -12,9 +12,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { AddPostComponent } from './pages/add-post/add-post.component';
-
-
+import {ReclamationTable} from "./pages/Table Reclamation/reclamationTable";
+import {AddPostComponent} from "./pages/add-post/add-post.component";
 
 
 @NgModule({
@@ -31,6 +30,7 @@ import { AddPostComponent } from './pages/add-post/add-post.component';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+    ReclamationTable,
     AddPostComponent
   ],
   providers: [],

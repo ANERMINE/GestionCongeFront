@@ -149,8 +149,8 @@ argon-dashboard-angular
 │   │   │   ├── tables
 │   │   │   │   ├── tables.component.html
 │   │   │   │   ├── tables.component.scss
-│   │   │   │   ├── tables.component.spec.ts
-│   │   │   │   └── tables.component.ts
+│   │   │   │   ├── reclamationTable.spec.ts
+│   │   │   │   └── reclamationTable.ts
 │   │   │   └── user-profile
 │   │   │       ├── user-profile.component.html
 │   │   │       ├── user-profile.component.scss

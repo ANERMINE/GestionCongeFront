@@ -5,15 +5,20 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import {AddPostComponent} from "./pages/add-post/add-post.component";
+import * as path from "path";
 
 const routes: Routes =[
   {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-  
   },
+  { path: '',
+    redirectTo: 'reclamation',
+    pathMatch: 'full',
+
+  },
+
   {
     path: '',
     component: AdminLayoutComponent,
@@ -35,9 +40,9 @@ const routes: Routes =[
   }, {
     path: '**',
     redirectTo: 'dashboard'
-  },
-
+  }
 ];
+
 @NgModule({
   imports: [
     CommonModule,
