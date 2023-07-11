@@ -4,6 +4,8 @@ import { Post } from "../../models/post";
 import { Comment } from "../../models/comment";
 import axios from 'axios';
 import {CommentService} from "../../services/comment.service";
+import {EmployeeService} from "../../services/employee.service";
+import {Employee} from "../../models/Employee";
 
 
 @Component({
@@ -35,13 +37,18 @@ selectedPost: Post = null;
   newPostDescription: string;
   newCommentContent: { [postId: number]: string } = {};
   showAddComment: { [postId: number]: boolean } = {};
+  showAddPostForm: boolean = false;
+  selectedEmployeeId: number;
+  employees: Employee[];
 
 
 
-  constructor(private postService: PostService ,private commentService:CommentService) { }
+
+  constructor(private postService: PostService ,private commentService:CommentService, private employeeService: EmployeeService) { }
 
   ngOnInit() {
     this.getAllPosts();
+    this.getEmployees();
   }
 
   async getAllPosts() {
@@ -75,27 +82,52 @@ selectedPost: Post = null;
       }
     );
   }*/
-
-  addNewPost(employeeId: number) {
-    this.newPost.datePublication = new Date();
-
-    this.postService.createPost(employeeId, this.newPost).subscribe(
-      (response: Post) => {
-        console.log('Post ajouté avec succès', response);
-        // Réinitialisez les valeurs ou effectuez d'autres actions après l'ajout du post
-        this.newPost = {
-          id_post: 20,
-          description: '',
-          datePublication: new Date(),
-          listCommentaire: [],
-          employeeId: 8// Remplacez la valeur 0 par l'ID de l'employé actuel
-        };
+  getEmployees() {
+    this.employeeService.getAlEmployee().subscribe(
+      (employees: Employee[]) => {
+        this.employees = employees;
       },
       (error: any) => {
-        console.error('Erreur lors de l\'ajout du post', error);
+        console.error('Erreur lors de la récupération des employés:', error);
       }
     );
   }
+
+  addNewPost() {
+    if (this.selectedEmployeeId) {
+      const selectedEmployee = this.employees.find(employee => employee.id_Emp === this.selectedEmployeeId);
+
+      if (selectedEmployee) {
+        const newPost: Post = {
+          id_post: 0,
+          description: this.newPostDescription,
+          datePublication: new Date(),
+          listCommentaire: [],
+          employeeId: selectedEmployee.id_Emp
+        };
+
+        this.postService.createPost(this.selectedEmployeeId, newPost).subscribe(
+          (response: Post) => {
+            console.log('Post ajouté avec succès', response);
+            this.newPostDescription = '';
+            this.showAddPostForm = false;
+            this.getAllPosts(); // Actualiser la liste des posts
+          },
+          (error: any) => {
+            console.error('Erreur lors de l\'ajout du post', error);
+          }
+        );
+      } else {
+        console.error('Employé sélectionné non trouvé');
+      }
+    } else {
+      console.error('Aucun employé sélectionné');
+    }
+  }
+
+
+
+
 
 
 
