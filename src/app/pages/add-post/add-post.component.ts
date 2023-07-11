@@ -14,16 +14,7 @@ import {Employee} from "../../models/Employee";
   styleUrls: ['add-post.component.css']
 })
 export class AddPostComponent implements OnInit {
-  /*  posts: Post[];
 
-selectedPost: Post = null;
-  updatedDescription: string;
-  newPostDescription: string;
-  newPost: Post = {
-    id_post: 0, // Remplacez la valeur 0 par l'ID du post
-    description: '',
-    datePublication: new Date(),
-    listCommentaire: [] };*/
   posts: Post[];
   newPost: Post = {
     id_post: 0,
@@ -66,22 +57,6 @@ selectedPost: Post = null;
     }
   }
 
-  /*async addNewPost() {
-    this.newPost.datePublication = new Date();
-    this.newPost.description = this.newPostDescription;
-
-    this.postService.addPost(this.newPost).subscribe(
-      (response: any) => {
-        console.log('Post ajouté avec succès', response);
-        // Réinitialisez les valeurs ou effectuez d'autres actions après l'ajout du post
-        this.newPost = new Post();
-        this.newPostDescription = '';
-      },
-      (error: any) => {
-        console.error('Erreur lors de l\'ajout du post', error);
-      }
-    );
-  }*/
   getEmployees() {
     this.employeeService.getAlEmployee().subscribe(
       (employees: Employee[]) => {
@@ -124,10 +99,6 @@ selectedPost: Post = null;
       console.error('Aucun employé sélectionné');
     }
   }
-
-
-
-
 
 
 

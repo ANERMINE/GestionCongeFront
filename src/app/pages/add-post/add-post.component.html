@@ -23,7 +23,7 @@
                   <button type="submit" class="btn btn-primary">Modifier</button>
                 </form>
               </div>
-              <button (click)="editPost(post)" class="btn btn-primary">Modifier</button>
+              <button (click)="editPost(post)" class="btn btn-primary">Modifier Post</button>
               <button (click)="toggleAddComment(post)" class="btn btn-primary">Ajouter un commentaire</button>
               <div *ngIf="showAddComment[post.id_post]">
                 <form (submit)="addComment(post)">
@@ -53,7 +53,7 @@
       <div class="form-group">
         <label>Sélectionnez un employé :</label>
         <select [(ngModel)]="selectedEmployeeId" class="form-control">
-          <option *ngFor="let employee of employees" [value]="employee.id_Emp">{{ employee.nom }}</option>
+          <option *ngFor="let employee of employees" [value]="employee.id_Emp">{{ employee.nom }}{{employee.prenom}}</option>
         </select>
       </div>
       <button type="submit" class="btn btn-primary">Ajouter</button>
