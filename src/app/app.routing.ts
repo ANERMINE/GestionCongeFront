@@ -14,12 +14,12 @@ const routes: Routes =[
     pathMatch: 'full',
   },
   { path: '',
-  redirectTo: 'reclamation',
+    redirectTo: 'reclamation',
     pathMatch: 'full',
 
-},
+  },
 
-{
+  {
     path: '',
     component: AdminLayoutComponent,
     children: [
